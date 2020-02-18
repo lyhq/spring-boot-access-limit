@@ -1,4 +1,4 @@
-> 原文作者：rstyro  
+> 原文作者：rstyro
 > 原文链接： https://rstyro.github.io/blog/2019/04/15/api接口防刷/
 
 > 接口防刷，通俗点理解就是限制某个用户在某段时间内访问某个接口的次数。
@@ -16,7 +16,7 @@
 - ......
 ### 案例
 下面通过代码实现**对请求来源的ip请求次数做限制**。
-整个案例的原理就是服务器通过redis记录下用户请求的次数，如果请求次数超过限制次数就不让访问。在redis保存的key是有时效性的，过期就会删除；使用ip作为key, 访问次数作为value保存在redis中。
+整个案例的原理就是服务器通过redis 记录下用户请求的次数，如果请求次数超过限制次数就不让访问。在redis 保存的key 是有时效性的，过期就会删除；使用ip作为key, 访问次数作为value保存在redis中。
 #### 自定义注解 @AccessLimit
 ```java
 @Documented
@@ -174,11 +174,10 @@ public class IndexController {
 }
 ```
 #### 测试
-启动应用程序，使用postman测试；  
+启动应用程序，使用postman工具测试；
 **正常访问的情况**
-![](https://raw.githubusercontent.com/lyhq/pigureBed/master/imgs/20191227110435.png)  
-
+![正常访问](https://raw.githubusercontent.com/lyhq/pigureBed/master/imgs/20191227110435.png)
 **访问受限的情况**
-![](https://raw.githubusercontent.com/lyhq/pigureBed/master/imgs/20191227110403.png)
+![访问受限](https://raw.githubusercontent.com/lyhq/pigureBed/master/imgs/20191227110403.png)
 
-> 代码地址：
+> 代码地址：https://github.com/lyhq/spring-boot-access-limit
